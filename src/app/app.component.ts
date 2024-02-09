@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Platform } from '@ionic/angular';
+import { SplashScreen } from '@capacitor/splash-screen';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,16 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor() {}
+  constructor(private platform:Platform) {
+    this.readyPlatform();
+  }
+
+  readyPlatform(){
+     this.platform.ready().then( async ()=>{
+      if(this.platform.is("hybrid")){
+        await SplashScreen.hide();
+      }
+    })
+  }
+
 }
