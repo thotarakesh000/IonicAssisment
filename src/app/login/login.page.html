@@ -16,9 +16,9 @@
             <ion-input formControlName="emailForm" placeholder="Enter Email" ></ion-input>
           </ion-item>
           <!-- {{loginForm.get('emailForm')?.errors}} -->
-          <ion-text color="danger" *ngIf="loginForm.get('emailForm')?.errors && (loginForm.get('emailForm')?.touched || loginForm.get('emailForm')?.dirty)">
+          <ion-text color="danger" *ngIf="loginForm.get('emailForm')?.errors && (loginForm.get('emailForm')?.touched || loginForm.get('emailForm')?.dirty ||formSubmit)">
             <p *ngIf="loginForm.get('emailForm')?.errors?.['required']??false">Email Required</p>
-            <!-- <p *ngIf="loginForm.get('emailForm')?.errors?.['email']??false">Invalid Email</p> -->
+            <p *ngIf="loginForm.get('emailForm')?.errors?.['email']??false">Invalid Email</p>
           </ion-text>
         </ion-list>
       </ion-col>
@@ -29,7 +29,7 @@
           <ion-item>
             <ion-input formControlName="password"   type="password" placeholder="Enter password"></ion-input>
           </ion-item>
-          <ion-text color="danger" *ngIf="loginForm.get('password')?.errors && (loginForm.get('password')?.touched || loginForm.get('password')?.dirty)">
+          <ion-text color="danger" *ngIf="loginForm.get('password')?.errors && (loginForm.get('password')?.touched || loginForm.get('password')?.dirty || formSubmit)">
             <p *ngIf="loginForm.get('password')?.errors?.['required']??false">Password Required</p>
           </ion-text>
         </ion-list>
@@ -46,6 +46,9 @@
       <ion-col>
         <ion-button type="submit" expand="block">Login</ion-button> 
       </ion-col>
+      <ion-col>
+        <ion-button (click)="registerUser()" expand="block">Register</ion-button> 
+      </ion-col>
     </ion-row>
   </ion-card>
 </form>
@@ -60,7 +63,7 @@
 
     </ion-col>
     <ion-col>
-      <ion-icon name="logo-google" size="large"></ion-icon>
+      <ion-icon name="logo-google" size="large" (click)="loginWithGoogle()"></ion-icon>
     </ion-col>
   </ion-row>
 

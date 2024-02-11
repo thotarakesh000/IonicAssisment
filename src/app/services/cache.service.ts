@@ -8,19 +8,31 @@ export class CacheService {
 
   constructor() { }
      async setName(key:any,value:any)  {
+      if(typeof(value)=="object"){
+        value=  JSON.stringify(value)
+      }
     await Preferences.set({
       key: key,
       value: value,
     });
   };
   
-  async  checkName (){
-    const { value } = await Preferences.get({ key: 'username' });
-  
-    console.log(`Hello ${value}!`);
+    checkName (key:any){
+    return new Promise((resolve,reject)=>{
+      Preferences.get({ key: key }).then((val)=>{
+        if(val.value){
+          resolve(JSON.parse(val.value))
+        }
+        else{
+          resolve(null)
+
+        }
+      })
+    })
+ 
   };
   
-   removeName = async () => {
-    await Preferences.remove({ key: 'name' });
+  async removeName  (name:any)  {
+    await Preferences.remove({ key: name });
   };
 }

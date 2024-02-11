@@ -4,4 +4,6 @@
     <string name="title_activity_main">IonicAssignment</string>
     <string name="package_name">io.ionic.starter</string>
     <string name="custom_url_scheme">io.ionic.starter</string>
+      <string name="server_client_id">149694519196-u8u6qirl6bjt2ts0v30tnpo8jf5mngrg.apps.googleusercontent.com</string>
+
 </resources>

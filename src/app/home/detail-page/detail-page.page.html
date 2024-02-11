@@ -1,0 +1,46 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="ion-margin-horizontal ion-padding-horizontal">
+    <ion-title>DetailPage</ion-title>
+    <ion-icon name="arrow-back-outline" slot="end" [routerLink]="['/home']"></ion-icon>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-grid>
+    <ion-row>
+      <ion-col class="imgAlignCenter">
+        <ion-img [src]="'https://picsum.photos/80/80?random='+id" class="imgCenter"></ion-img>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+  <ion-item>
+    <ion-label>title:{{data?.title}} </ion-label>
+  </ion-item>
+</ion-col>
+</ion-row>
+<ion-row>
+  <ion-col>
+    <ion-list>
+      <ion-list-header>
+        <ion-label>overview</ion-label>
+      </ion-list-header>
+      <ion-item>
+        <ion-label>{{data?.overview}}</ion-label>
+      </ion-item>
+    </ion-list>
+
+</ion-col>
+</ion-row>
+<ion-row>
+  <ion-col>
+<ion-item>
+<ion-label>status:{{data?.status}} </ion-label>
+</ion-item>
+</ion-col>
+</ion-row>
+</ion-grid>
+</ion-content>

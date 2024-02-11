@@ -1,0 +1,175 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="ion-margin-horizontal ion-padding-horizontal">
+    <ion-title>register</ion-title>
+    <ion-icon name="arrow-back-outline" slot="end" [routerLink]="['/login']"></ion-icon>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="ion-margin-top  ion-padding">
+    <form  [formGroup]="registerForm"> 
+    <ion-card>
+      <!-- firstName -->
+      <ion-row>
+        <ion-col>
+          <ion-list>
+            <ion-item>
+              <ion-input formControlName="firstName" placeholder="Enter FirstName" ></ion-input>
+            </ion-item>
+            <!-- {{loginForm.get('emailForm')?.errors}} -->
+            <ion-text color="danger" *ngIf="registerForm.get('firstName')?.errors && (registerForm.get('firstName')?.touched || registerForm.get('firstName')?.dirty ||formSubmit)">
+              <p *ngIf="registerForm.get('firstName')?.errors?.['required']??false">FirstName Required</p>
+            </ion-text>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+      <!-- lastName -->
+      <ion-row>
+        <ion-col>
+          <ion-list>
+            <ion-item>
+              <ion-input formControlName="lastName" placeholder="Enter lastName" ></ion-input>
+            </ion-item>
+            <!-- {{loginForm.get('emailForm')?.errors}} -->
+            <ion-text color="danger" *ngIf="registerForm.get('lastName')?.errors && (registerForm.get('lastName')?.touched || registerForm.get('lastName')?.dirty ||formSubmit)">
+              <p *ngIf="registerForm.get('lastName')?.errors?.['required']??false">lastName Required</p>
+            </ion-text>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+      <!-- email -->
+      <ion-row>
+        <ion-col>
+          <ion-list>
+            <ion-item>
+              <ion-input formControlName="email" placeholder="Enter email" ></ion-input>
+            </ion-item>
+            <!-- {{loginForm.get('emailForm')?.errors}} -->
+            <ion-text color="danger" *ngIf="registerForm.get('email')?.errors && (registerForm.get('email')?.touched || registerForm.get('email')?.dirty ||formSubmit)">
+              <p *ngIf="registerForm.get('email')?.errors?.['required']??false">email Required</p>
+              <p *ngIf="registerForm.get('email')?.errors?.['email']??false">Invalid email </p>
+
+            </ion-text>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+      <!-- mobileNumber -->
+      <ion-row>
+        <ion-col>
+          <ion-list>
+            <ion-item>
+              <ion-input formControlName="mobileNumber" placeholder="Enter mobileNumber" ></ion-input>
+            </ion-item>
+            <!-- {{loginForm.get('emailForm')?.errors}} -->
+            <ion-text color="danger" *ngIf="registerForm.get('mobileNumber')?.errors && (registerForm.get('mobileNumber')?.touched || registerForm.get('mobileNumber')?.dirty ||formSubmit)">
+              <p *ngIf="registerForm.get('mobileNumber')?.errors?.['required']??false">mobileNumber Required</p>
+            </ion-text>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+      <!-- userPassword -->
+      <ion-row>
+        <ion-col>
+          <ion-list>
+            <ion-item>
+              <ion-input formControlName="userPassword" type="password" placeholder="Enter userPassword" ></ion-input>
+            </ion-item>
+            <!-- {{loginForm.get('emailForm')?.errors}} -->
+            <ion-text color="danger" *ngIf="registerForm.get('userPassword')?.errors && (registerForm.get('userPassword')?.touched || registerForm.get('userPassword')?.dirty ||formSubmit)">
+              <p *ngIf="registerForm.get('userPassword')?.errors?.['required']??false">userPassword Required</p>
+            </ion-text>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+      <!-- dateOfBirth -->
+      <ion-row>
+        <ion-col>
+          <!-- <ion-datetime mode="ios" formControlName="dateOfBirth" placeholder="DD/MM/YYYY" presentation="date" pickerFormat="DD/MMMM/YYYY"  displayFormat="DD/MM/YYYY"></ion-datetime> -->
+          <ion-datetime-button  datetime="datetime"></ion-datetime-button>
+
+          <ion-modal [keepContentsMounted]="true">
+            <ng-template>
+              <ion-datetime presentation="date" formControlName="dateOfBirth" id="datetime"></ion-datetime>
+            </ng-template>
+          </ion-modal>
+              <!-- <ion-datetime #dateTimePicker displayFormat="DD/MM/YYYY" formControlName="dateOfBirth" presentation="date" mode="ios" ></ion-datetime> -->
+                        <!-- {{loginForm.get('emailForm')?.errors}} -->
+            <ion-text color="danger" *ngIf="registerForm.get('dateOfBirth')?.errors && (registerForm.get('dateOfBirth')?.touched || registerForm.get('dateOfBirth')?.dirty ||formSubmit)">
+              <p *ngIf="registerForm.get('dateOfBirth')?.errors?.['required']??false">dateOfBirth Required</p>
+            </ion-text>
+        </ion-col>
+      </ion-row>
+      <!-- latitude longitude -->
+      <ion-row>
+        <ion-col>
+          <ion-list>
+            <ion-item>
+              <ion-input formControlName="latitude" readonly placeholder="Enter latitude" ></ion-input>
+            </ion-item>
+            <!-- {{loginForm.get('emailForm')?.errors}} -->
+            <ion-text color="danger" *ngIf="registerForm.get('latitude')?.errors && (registerForm.get('latitude')?.touched || registerForm.get('latitude')?.dirty ||formSubmit)">
+              <p *ngIf="registerForm.get('latitude')?.errors?.['required']??false">latitude Required</p>
+            </ion-text>
+          </ion-list>
+        </ion-col>
+      <!-- </ion-row>
+      <ion-row> -->
+        <ion-col>
+          <ion-list>
+            <ion-item>
+              <ion-input formControlName="longitude" readonly placeholder="Enter longitude" ></ion-input>
+            </ion-item>
+            <!-- {{loginForm.get('emailForm')?.errors}} -->
+            <ion-text color="danger" *ngIf="registerForm.get('longitude')?.errors && (registerForm.get('longitude')?.touched || registerForm.get('longitude')?.dirty ||formSubmit)">
+              <p *ngIf="registerForm.get('longitude')?.errors?.['required']??false">longitude Required</p>
+            </ion-text>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+      <!-- address -->
+      <ion-row>
+        <ion-col>
+          <ion-list>
+            <ion-item>
+              <ion-textarea formControlName="address" [readonly]="true" placeholder="Enter address" ></ion-textarea>
+            </ion-item>
+            <!-- {{loginForm.get('emailForm')?.errors}} -->
+            <ion-text color="danger" *ngIf="registerForm.get('address')?.errors && (registerForm.get('address')?.touched || registerForm.get('address')?.dirty ||formSubmit)">
+              <p *ngIf="registerForm.get('address')?.errors?.['required']??false">address Required</p>
+            </ion-text>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-avatar (click)="getImage()">
+            <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+          </ion-avatar>
+        </ion-col>
+        <ion-col *ngIf="showImage">
+          <ion-img  [src]="imageData" class="imgClass" formControlName="image"></ion-img>
+        </ion-col>
+        <ion-text color="danger" *ngIf="registerForm.get('image')?.errors && (registerForm.get('image')?.touched || registerForm.get('image')?.dirty ||formSubmit)">
+          <p *ngIf="registerForm.get('image')?.errors?.['required']??false">image Required</p>
+        </ion-text>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+      <ion-checkbox formControlName="terms" (ionChange)="checkboxChange($event)">terms and conditions </ion-checkbox>
+      <ion-text color="danger" *ngIf="registerForm.get('terms')?.errors && (registerForm.get('terms')?.touched || registerForm.get('terms')?.dirty ||formSubmit)">
+        <p *ngIf="registerForm.get('terms')?.errors?.['required']??false">terms Required</p>
+      </ion-text>
+        </ion-col>
+      </ion-row>
+  
+      <ion-row>      
+        <ion-col>
+          <ion-button (click)="registerUser()" expand="block">Register</ion-button> 
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </form>
+   
+  
+   </ion-grid>
+</ion-content>
