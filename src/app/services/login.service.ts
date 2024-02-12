@@ -12,6 +12,9 @@ export class LoginService {
   validateLoginUser(req:any){
    return this.http.post(environment.login,req)
   }
+  validateLoginSocialUser(req:any){
+    return this.http.post(environment.loginSocialUser,req)
+   }
 
   registerUser(req:any){
     return  this.http.post(environment.register,req)

@@ -49,7 +49,22 @@ export class LoginPage implements OnInit {
   }
  async loginWithGoogle(){
     let googleUser = await GoogleAuth.signIn();
-console.log("googleUser ",googleUser)
+console.log("googleUser ",googleUser);
+this.loader.showLoader();
+let reqdata={
+  email:googleUser.email,
+}
+this.loginService.validateLoginSocialUser(reqdata).subscribe((res:any)=>{
+  console.log("validateLoginSocialUser ",res);
+  this.loader.hideLoader();
+  if(res.status=="success"){
+        this.navctrl.navigateRoot(['/home'])
+
+  }
+},(error)=>{
+  console.log("validateLoginSocialUser ",error)
+  this.loader.hideLoader();
+})
   }
   async checkboxChange(event:any){
     console.log("event ",(await this.cache.checkName("name")))
